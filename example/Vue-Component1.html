@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Component 初识组件</title>
+    <script src="../../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <h1>Component 初识组件</h1>
+    <hr>
+    <div id="app">
+        <sunyaq :here="message"></sunyaq>
+        <panda :here="message"></panda>
+    </div>
+</body>
+<script>
+    Vue.component("sunyaq", {
+        template: `<h2 style="color:red">我是全局构造器sunyaq{{here}}</h2>`,
+        props: ['here']
+    });
+    var pandacomponents = {
+        template: `<h2 style="color:red">我是局部构造器panda{{here}}</h2>`,
+        props: ['here']
+    }
+    var app = new Vue({
+        el: "#app",
+        data: {
+            message: "hello"
+        },
+
+        components: {
+            "panda": pandacomponents
+        }
+    })
+</script>
+
+</html>
